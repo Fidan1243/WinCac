@@ -21,6 +21,7 @@ namespace WpfApp2
     public partial class MainWindow : Window
     {
         string ope = "";
+        bool op = false;
         int num1 = 0;
         int num2 = 0;
         public MainWindow()
@@ -42,62 +43,25 @@ namespace WpfApp2
                 }
                 else if (bt.Content.ToString() == "+" || bt.Content.ToString() == "-" || bt.Content.ToString() == "*" || bt.Content.ToString() == "/")
                 {
-                    ope = bt.Content.ToString();
-                    label2.Content = label1.Content;
-                    label1.Content = "0";
-                    label3.Content = ope;
+                    if (!op)
+                    {
+                        ope = bt.Content.ToString();
+                        label2.Content = label1.Content;
+                        label1.Content = "0";
+                        label3.Content = ope;
+                        op = true;
+                    }
+                    else
+                    {
+                        Op(bt.Content.ToString(), false);
+                    }
+                    
                 }
                 else if (bt.Content.ToString() == "=")
                 {
                     label2.Content = "";
                     label3.Content = "";
-                    switch (ope)
-                    {
-                        case "+":
-                            {
-                                label1.Content = num1 + num2;
-                                num1 = Convert.ToInt32(label1.Content.ToString());
-                                ope = "";
-                                num2 = 0;
-                                break;
-                            }
-                        case "-":
-                            {
-                                label1.Content = num1 - num2;
-                                num1 = Convert.ToInt32(label1.Content.ToString());
-                                ope = "";
-                                num2 = 0;
-                                break;
-                            }
-                        case "*":
-                            {
-                                label1.Content = num1 * num2;
-                                num1 = Convert.ToInt32(label1.Content.ToString());
-                                ope = "";
-                                num2 = 0;
-                                break;
-                            }
-                        case "/":
-                            {
-                                if (num2 == 0)
-                                {
-                                    label1.Content = "Divided by zero is invalid";
-                                    ope = "";
-                                    num2 = 0;
-                                    num1 = 0;
-                                }
-                                else
-                                {
-                                    label1.Content = num1 / num2;
-                                    num1 = Convert.ToInt32(label1.Content.ToString());
-                                    ope = "";
-                                    num2 = 0;
-                                }
-                                break;
-                            }
-                        default:
-                            break;
-                    }
+                    Op("", true);
                 }
                 else if(bt.Content.ToString() == "X")
                 {
@@ -116,6 +80,106 @@ namespace WpfApp2
                         label1.Content = num2;
                     }
                 }
+            }
+            
+        }
+        private void Op(string newop, bool isEq)
+        {
+            switch (ope)
+            {
+                case "+":
+                    {
+                        if (isEq)
+                        {
+                            label1.Content = num1 + num2;
+                            num1 = Convert.ToInt32(label1.Content.ToString());
+                            ope = "";
+                            num2 = 0;
+                        }
+                        else
+                        {
+                            label2.Content = num1 + num2;
+                            label1.Content = "0";
+                            label3.Content = ope;
+                            ope = newop;
+                            num1 = Convert.ToInt32(label2.Content.ToString());
+                            num2 = 0;
+                        }
+                        
+                        break;
+                    }
+                case "-":
+                    {
+                        if (isEq)
+                        {
+                            label1.Content = num1 - num2;
+                            num1 = Convert.ToInt32(label1.Content.ToString());
+                            ope = "";
+                            num2 = 0;
+                        }
+                        else
+                        {
+                            label2.Content = num1 - num2;
+                            label1.Content = "0";
+                            label3.Content = ope;
+                            ope = newop;
+                            num1 = Convert.ToInt32(label2.Content.ToString());
+                            num2 = 0;
+                        }
+                        break;
+                    }
+                case "*":
+                    {
+                        if (isEq)
+                        {
+                            label1.Content = num1 * num2;
+                            num1 = Convert.ToInt32(label1.Content.ToString());
+                            ope = "";
+                            num2 = 0;
+                        }
+                        else
+                        {
+                            label2.Content = num1 * num2;
+                            label1.Content = "0";
+                            label3.Content = ope;
+                            ope = newop;
+                            num1 = Convert.ToInt32(label2.Content.ToString());
+                            num2 = 0;
+                        }
+                        break;
+                    }
+                case "/":
+                    {
+                        if (num2 == 0)
+                        {
+                            label1.Content = "Divided by zero is invalid";
+                            ope = "";
+                            num2 = 0;
+                            num1 = 0;
+                        }
+                        else
+                        {
+                            if (isEq)
+                            {
+                                label1.Content = num1 / num2;
+                                num1 = Convert.ToInt32(label1.Content.ToString());
+                                ope = "";
+                                num2 = 0;
+                            }
+                            else
+                            {
+                                label2.Content = num1 / num2;
+                                label1.Content = "0";
+                                label3.Content = ope;
+                                ope = newop;
+                                num1 = Convert.ToInt32(label2.Content.ToString());
+                                num2 = 0;
+                            }
+                        }
+                        break;
+                    }
+                default:
+                    break;
             }
         }
 
