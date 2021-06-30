@@ -5,23 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="300" Background="SlateGray" MinWidth="300" MaxWidth="300" WindowStyle="ToolWindow">
+        Title="MainWindow" Height="500" Width="300" Background="SlateGray" WindowStyle="None" MinWidth="300" MaxWidth="300" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="73*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label x:Name="label1" FontSize="38" Content="0" Margin="113,10,-112.4,108" Grid.RowSpan="2"/>
-            <UniformGrid Grid.Row="1" Rows="2">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Label x:Name="label2" FontSize="18" FontFamily="Garamond" Foreground="White" Content="" Margin="0,0,0.6,68" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label3" FontSize="18" FontFamily="Garamond" Foreground="White" Content="" Margin="0,25,0.6,68" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label1" FontSize="38" FontFamily="Garamond" Foreground="White" Content="0" Margin="0,50,0.6,68" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <UniformGrid Rows="2" Grid.ColumnSpan="2" Margin="0,118,-0.4,0" Grid.RowSpan="2">
                 <Button Opacity="0.5" Content="%" FontSize="25" FontWeight="Bold"></Button>
                 <Button Opacity="0.5" Content="CE" FontSize="25" FontWeight="Bold"></Button>
-                <Button Opacity="0.5" Content="C" FontSize="25" FontWeight="Bold" Click="Button_Click"></Button>
-                <Button Opacity="0.8" Content="Del"  FontSize="25" Click="Button_Click"></Button>
+                <Button Opacity="0.5" x:Name="C" Content="C" FontSize="25" FontWeight="Bold" Click="Button_Click"></Button>
+                <Button Opacity="0.4" Content="X" Background="Red"  FontSize="25" Click="Button_Click"></Button>
                 <Button Opacity="0.5" Content="1/x" FontFamily="Garamond" FontSize="25" FontWeight="Bold"></Button>
                 <Button Opacity="0.5" Content="x^2" FontFamily="Garamond" FontSize="25" FontWeight="Bold"></Button>
                 <Button Opacity="0.5" Content="√" FontSize="25" FontWeight="Bold"></Button>
