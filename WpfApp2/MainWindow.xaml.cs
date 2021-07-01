@@ -95,6 +95,7 @@ namespace WpfApp2
                             num1 = Convert.ToInt32(label1.Content.ToString());
                             ope = "";
                             num2 = 0;
+                            op = false;
                         }
                         else
                         {
@@ -116,6 +117,7 @@ namespace WpfApp2
                             num1 = Convert.ToInt32(label1.Content.ToString());
                             ope = "";
                             num2 = 0;
+                            op = false;
                         }
                         else
                         {
@@ -136,6 +138,7 @@ namespace WpfApp2
                             num1 = Convert.ToInt32(label1.Content.ToString());
                             ope = "";
                             num2 = 0;
+                            op = false;
                         }
                         else
                         {
@@ -156,6 +159,7 @@ namespace WpfApp2
                             ope = "";
                             num2 = 0;
                             num1 = 0;
+                            op = false;
                         }
                         else
                         {
@@ -165,6 +169,7 @@ namespace WpfApp2
                                 num1 = Convert.ToInt32(label1.Content.ToString());
                                 ope = "";
                                 num2 = 0;
+                                op = false;
                             }
                             else
                             {
