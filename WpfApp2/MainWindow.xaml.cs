@@ -37,9 +37,27 @@ namespace WpfApp2
                 if (bt.Content.ToString() == "C")
                 {
                     label1.Content = "0";
-                    num1 = 0;
-                    num2 = 0;
+                    label2.Visibility = Visibility.Hidden;
+                    label3.Visibility = Visibility.Hidden;
                     ope = "";
+        op = false;
+        num1 = 0;
+        num2 = 0;
+                }
+                else if (bt.Content.ToString() == "+/-")
+                {
+                    num1 = -num1;
+                    if (!op)
+	{
+                        label1.Content = num1;
+	}
+                    else
+	{
+                        
+                    num2 = -num2;
+                        label1.Content = num1;
+                        label2.Content = num2;
+	}
                 }
                 else if (bt.Content.ToString() == "+" || bt.Content.ToString() == "-" || bt.Content.ToString() == "*" || bt.Content.ToString() == "/")
                 {
